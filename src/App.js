@@ -46,8 +46,7 @@ const App = () => {
   };
 
   const onRemoveClick = (id) => {
-    const itemToremove = todos.find((todo) => todo.id === id);
-    const updatedTodos = todos.filter((todo) => todo !== itemToremove);
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
 
