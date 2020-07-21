@@ -1,29 +1,39 @@
-/* eslint-disable react/button-has-type */
 import React from 'react';
+import { Typography, Paper, Grid, IconButton, Tooltip } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import CheckCircleOutlineRoundedIcon from '@material-ui/icons/CheckCircleOutlineRounded';
+import CancelRoundedIcon from '@material-ui/icons/CancelRounded';
 
 const ToDoItem = (props) => {
   const { todo, onClick, onRemoveClick } = props;
-  let color;
-  let text;
-
-  if (todo.complete === true) {
-    color = 'lightgreen';
-    text = 'Complete';
-  } else {
-    color = 'pink';
-    text = 'Incomplete';
-  }
 
   return (
-    <div className="wrapper" style={{ backgroundColor: color }}>
-      <h3>{todo.name}</h3>
-      <button className="btn" onClick={() => onClick(todo.id)}>
-        {text}
-      </button>
-      <button className="btn" onClick={() => onRemoveClick(todo.id)}>
-        Remove from list
-      </button>
-    </div>
+    <Paper variant="outlined">
+      <Grid container direction="row" alignItems="center" justify="space-evenly">
+        <Grid item xs={8}>
+          <Typography
+            style={{ textDecoration: todo.complete ? 'line-through' : null }}
+            variant="h6"
+          >
+            {todo.name}
+          </Typography>
+        </Grid>
+        <Grid item xs={1}>
+          <Tooltip title={todo.complete ? 'mark as not done' : 'mark as done'}>
+            <IconButton data-testid="toggle-done" onClick={() => onClick(todo.id)}>
+              {!todo.complete ? <CheckCircleOutlineRoundedIcon /> : <CancelRoundedIcon />}
+            </IconButton>
+          </Tooltip>
+        </Grid>
+        <Grid item xs={1}>
+          <Tooltip title="Remove from list">
+            <IconButton data-testid="delete" onClick={() => onRemoveClick(todo.id)}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        </Grid>
+      </Grid>
+    </Paper>
   );
 };
 

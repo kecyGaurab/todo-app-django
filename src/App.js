@@ -1,8 +1,8 @@
-/* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
-import './App.css';
-import Bar from './components/bar';
+import { Container, Box } from '@material-ui/core';
+import AddToDo from './components/addTodo';
 import ToDoItem from './components/toDoItem';
+import NavBar from './components/navBar';
 
 const App = () => {
   const initialTodos = [
@@ -52,12 +52,22 @@ const App = () => {
   };
 
   return (
-    <div className="">
-      <Bar onSubmit={onSubmit} newTodo={newTodo} onInputChange={onChange} />
-      {todos.map((todo) => (
-        <ToDoItem key={todo.id} todo={todo} onClick={onClick} onRemoveClick={onRemoveClick} />
-      ))}
-    </div>
+    <>
+      <NavBar />
+      <Container maxWidth="md">
+        <Box>
+          <AddToDo
+            onSubmit={onSubmit}
+            newTodo={newTodo}
+            onInputChange={onChange}
+            emptyFields={emptyFields}
+          />
+          {todos.map((todo) => (
+            <ToDoItem key={todo.id} todo={todo} onClick={onClick} onRemoveClick={onRemoveClick} />
+          ))}
+        </Box>
+      </Container>
+    </>
   );
 };
 
