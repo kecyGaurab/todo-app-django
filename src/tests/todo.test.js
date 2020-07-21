@@ -34,7 +34,7 @@ test('clicking the button calls event handler once', () => {
 
   const component = render(<ToDoItem todo={todo} onClick={mockHandler} />);
 
-  const button = component.getByText('Complete');
+  const button = component.getByTestId('toggle-done');
   fireEvent.click(button);
 
   expect(mockHandler.mock.calls).toHaveLength(1);
@@ -50,7 +50,7 @@ test('clicking the remove from list button works', () => {
 
   const component = render(<ToDoItem todo={todo} onRemoveClick={mockHandler} />);
 
-  const button = component.getByText('Remove from list');
+  const button = component.getByTestId('delete');
   fireEvent.click(button);
 
   expect(component).toBeNull;
