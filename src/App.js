@@ -54,9 +54,11 @@ const App = () => {
   return (
     <div className="">
       <Bar onSubmit={onSubmit} newTodo={newTodo} onInputChange={onChange} />
-      {todos.map((todo) => (
-        <ToDoItem key={todo.id} todo={todo} onClick={onClick} onRemoveClick={onRemoveClick} />
-      ))}
+      <div className="item">
+        {todos.map((todo) => (
+          <ToDoItem key={todo.id} todo={todo} onClick={onClick} onRemoveClick={onRemoveClick} />
+        ))}
+      </div>
     </div>
   );
 };
