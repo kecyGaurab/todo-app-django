@@ -24,7 +24,14 @@ const AddToDo = (props) => {
           />
         </Grid>
         <Grid item xs={2} align="right">
-          <Button color="primary" size="large" type="submit" value="Submit" variant="outlined">
+          <Button
+            disabled={!newTodo.name}
+            color="primary"
+            size="large"
+            type="submit"
+            value="Submit"
+            variant="outlined"
+          >
             Submit
           </Button>
         </Grid>
