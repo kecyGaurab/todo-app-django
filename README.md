@@ -1,6 +1,6 @@
 # notes-app
 
-A Todo app is a task tracking application that allows user to save todos with name and completed. The tasks are saved in the database and can also be deleted. This application was built inorder to learn Django, which is my first attempt to build something wit it.
+A Todo app is a task tracking application that allows user to save todos with name and completed. The tasks are saved in the database and can also be deleted. This application was built inorder to learn Django, which is my first attempt to build something with it.
 
 # Features
 
