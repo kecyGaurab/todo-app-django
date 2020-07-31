@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Container, Box } from '@material-ui/core';
 import AddToDo from './components/addTodo';
 import ToDoItem from './components/toDoItem';
@@ -15,6 +16,15 @@ const App = () => {
 
   const [newTodo, setnewTodo] = useState({ id: null, name: '', complete: false });
   const [todos, setTodos] = useState(initialTodos);
+
+  useEffect(() => {
+    async function fetchData() {
+      // You can await here
+      const response = await axios.get('/api/todos/');
+      setTodos(response.data);
+    }
+    fetchData();
+  }, []);
 
   const generateNewId = () => {
     return todos.length + 1;
