@@ -12,16 +12,16 @@ const ToDoItem = (props) => {
       <Grid container direction="row" alignItems="center" justify="space-evenly">
         <Grid item xs={8}>
           <Typography
-            style={{ textDecoration: todo.complete ? 'line-through' : null }}
+            style={{ textDecoration: todo.completed ? 'line-through' : null }}
             variant="h6"
           >
             {todo.name}
           </Typography>
         </Grid>
         <Grid item xs={1}>
-          <Tooltip title={todo.complete ? 'mark as not done' : 'mark as done'}>
+          <Tooltip title={todo.completed ? 'mark as not done' : 'mark as done'}>
             <IconButton data-testid="toggle-done" onClick={() => onClick(todo.id)}>
-              {!todo.complete ? <CheckCircleOutlineRoundedIcon /> : <CancelRoundedIcon />}
+              {!todo.completed ? <CheckCircleOutlineRoundedIcon /> : <CancelRoundedIcon />}
             </IconButton>
           </Tooltip>
         </Grid>

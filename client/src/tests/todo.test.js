@@ -16,7 +16,7 @@ it('renders without crashing', () => {
 test('renders content', () => {
   const todo = {
     name: 'Build to do app',
-    complete: true,
+    completed: true,
   };
 
   const component = render(<ToDoItem todo={todo} />);
@@ -27,7 +27,7 @@ test('renders content', () => {
 test('clicking the button calls event handler once', () => {
   const todo = {
     name: 'Build to do app',
-    complete: true,
+    completed: true,
   };
 
   const mockHandler = jest.fn();
@@ -43,7 +43,7 @@ test('clicking the button calls event handler once', () => {
 test('clicking the remove from list button works', () => {
   const todo = {
     name: 'Build to do app',
-    complete: false,
+    completed: false,
   };
 
   const mockHandler = jest.fn();

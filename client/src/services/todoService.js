@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const baseUrl = '/api/todos/';
 
 const getAll = async () => {
@@ -18,7 +19,7 @@ const create = async (toDo) => {
 
 // update takes in id and newObject to update the observation
 const update = async (id, toDo) => {
-  const response = await axios.put(`${baseUrl}/${id}`, toDo);
+  const response = await axios.put(`${baseUrl}/${id}/`, toDo);
   return response.data;
 };
 
