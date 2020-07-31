@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Container, Box } from '@material-ui/core';
+import todoService from './services/todoService';
 import AddToDo from './components/addTodo';
 import ToDoItem from './components/toDoItem';
 import NavBar from './components/navBar';
@@ -19,12 +19,11 @@ const App = () => {
 
   useEffect(() => {
     async function fetchData() {
-      // You can await here
-      const response = await axios.get('/api/todos/');
-      setTodos(response.data);
+      const response = await todoService.getAll();
+      setTodos(response);
     }
     fetchData();
-  }, []);
+  }, [todos]);
 
   const generateNewId = () => {
     return todos.length + 1;
@@ -40,7 +39,8 @@ const App = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setTodos(todos.concat(newTodo));
+    // setTodos(todos.concat(newTodo));
+    todoService.create(newTodo);
     emptyFields();
   };
 
@@ -52,7 +52,7 @@ const App = () => {
   };
 
   const onChange = (event) => {
-    setnewTodo({ ...newTodo, name: event.target.value, id: generateNewId() });
+    setnewTodo({ ...newTodo, name: event.target.value });
   };
 
   const onRemoveClick = (id) => {
